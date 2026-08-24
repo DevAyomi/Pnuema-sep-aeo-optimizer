@@ -1647,3 +1647,136 @@ button:focus-visible {
   margin-bottom: 1.25rem;
   text-align: left;
 }
+
+/* ================================================================
+   14. WELCOME / EMPTY STATE STYLE
+   ================================================================ */
+.welcome-container {
+  margin: 1.5rem 0 3rem 0;
+  animation: welcomeFadeIn 0.5s var(--ease-out);
+}
+
+.welcome-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-xl);
+  padding: 4rem 3rem;
+  box-shadow: var(--shadow-md);
+  text-align: center;
+}
+
+.welcome-header {
+  max-width: 680px;
+  margin: 0 auto 3.5rem auto;
+}
+
+.welcome-icon-box {
+  width: 72px;
+  height: 72px;
+  border-radius: var(--radius-xl);
+  background-color: var(--accent-blue-subtle);
+  color: var(--accent-blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem auto;
+}
+
+.welcome-header h2 {
+  font-size: 1.875rem;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+}
+
+.welcome-desc {
+  color: var(--text-secondary);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+}
+
+.welcome-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  text-align: left;
+}
+
+.feature-item {
+  background: var(--bg-input);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 2rem 1.75rem;
+  transition: all 0.25s var(--ease-out);
+}
+
+.feature-item:hover {
+  transform: translateY(-3px);
+  border-color: var(--border-hover);
+  box-shadow: var(--shadow-md);
+}
+
+.feature-icon {
+  width: 46px;
+  height: 46px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.feature-icon.seo-color {
+  background-color: var(--accent-blue-subtle);
+  color: var(--accent-blue);
+}
+
+.feature-icon.aeo-color {
+  background-color: var(--accent-emerald-subtle);
+  color: var(--accent-emerald);
+}
+
+.feature-icon.ai-color {
+  background-color: var(--accent-amber-subtle);
+  color: var(--accent-amber);
+}
+
+.feature-item h4 {
+  font-size: 1.0625rem;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+  margin-bottom: 0.625rem;
+}
+
+.feature-item p {
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  line-height: 1.55;
+}
+
+@keyframes welcomeFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Welcome State */
+@media (max-width: 992px) {
+  .welcome-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+  
+  .welcome-card {
+    padding: 3rem 1.5rem;
+  }
+
+  .welcome-header {
+    margin-bottom: 2.5rem;
+  }
+}

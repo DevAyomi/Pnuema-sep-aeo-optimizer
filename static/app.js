@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const errorContainer = document.getElementById('error-container');
     const errorMessage = document.getElementById('error-message');
     const resultsContainer = document.getElementById('results-container');
+    const welcomeContainer = document.getElementById('welcome-container');
     
     // Gauges
     const seoScoreVal = document.getElementById('seo-score-value');
@@ -75,6 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Reset UI States
         errorContainer.classList.add('hidden');
         resultsContainer.classList.add('hidden');
+        if (welcomeContainer) welcomeContainer.classList.add('hidden');
         loadingContainer.classList.remove('hidden');
         submitBtn.disabled = true;
         btnLoader.classList.remove('hidden');
@@ -581,6 +583,7 @@ document.addEventListener('DOMContentLoaded', () => {
             historyDrawer.classList.add('hidden');
             errorContainer.classList.add('hidden');
             resultsContainer.classList.add('hidden');
+            if (welcomeContainer) welcomeContainer.classList.add('hidden');
             loadingContainer.classList.remove('hidden');
 
             const res = await fetch(`/api/history/${id}`);
