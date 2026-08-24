@@ -3,7 +3,7 @@
   "rewrites": [
     {
       "source": "/api/:path*",
-      "destination": "https://<YOUR_RAILWAY_APP_URL>/api/:path*"
+      "destination": "https://pnuema-sep-aeo-optimizer-production.up.railway.app/api/:path*"
     }
   ]
 }
