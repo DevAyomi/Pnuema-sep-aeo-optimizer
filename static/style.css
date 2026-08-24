@@ -217,30 +217,121 @@ html:not([data-theme]) .sun-icon { display: block; }
   margin-bottom: 2rem;
 }
 
+/* Redesigned search card matching Optimax template */
 .search-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border-color);
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #5136ed 0%, #2563eb 100%);
+  border: none;
   border-radius: var(--radius-xl);
-  padding: 2.5rem;
-  box-shadow: var(--shadow-card);
-  transition: box-shadow 0.3s ease;
+  padding: 3rem 4rem;
+  box-shadow: 0 12px 32px rgba(81, 54, 237, 0.25);
+  transition: all 0.3s ease;
+  color: #ffffff;
 }
 
 .search-card:hover {
-  box-shadow: var(--shadow-md);
+  box-shadow: 0 16px 40px rgba(81, 54, 237, 0.35);
 }
 
 .search-card h1 {
-  font-size: clamp(1.5rem, 2.5vw, 2rem);
-  margin-bottom: 0.5rem;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  margin-bottom: 0.75rem;
+  color: #ffffff;
 }
 
 .subtitle {
-  color: var(--text-secondary);
-  font-size: 1.0625rem;
-  margin-bottom: 2rem;
-  max-width: 680px;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 1.1rem;
+  margin-bottom: 2.5rem;
+  max-width: 600px; /* Stay clear of the rocket */
   line-height: 1.6;
+}
+
+/* Force white background for inputs inside search card */
+.search-card .form-group label {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.75rem;
+}
+
+.search-card input[type="url"],
+.search-card select {
+  background: #ffffff !important;
+  color: #0f172a !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.search-card input[type="url"]::placeholder {
+  color: #94a3b8 !important;
+}
+
+.search-card .input-icon {
+  color: #64748b !important;
+}
+
+/* Orange Button Style matching the template */
+.search-card .btn-primary {
+  background: #ff6b00 !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 14px rgba(255, 107, 0, 0.4) !important;
+  transition: all 0.2s ease !important;
+}
+
+.search-card .btn-primary:hover {
+  background: #ff8522 !important;
+  box-shadow: 0 6px 20px rgba(255, 107, 0, 0.6) !important;
+  transform: translateY(-1px);
+}
+
+/* Graphic Overlay Decoration */
+.search-card-graphic {
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  width: 260px;
+  height: 320px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.search-card-graphic .rocket-svg {
+  position: absolute;
+  bottom: 65px;
+  right: 65px;
+  width: 95px;
+  height: 142px;
+  z-index: 3;
+  animation: float 4s ease-in-out infinite;
+}
+
+.search-card-graphic .clouds-svg {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 280px;
+  height: 120px;
+  z-index: 2;
+}
+
+@keyframes float {
+  0% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-10px) rotate(1.5deg); }
+  100% { transform: translateY(0px) rotate(0deg); }
+}
+
+@media (max-width: 992px) {
+  .search-card {
+    padding: 2.5rem;
+  }
+  .subtitle {
+    max-width: 100%;
+  }
+  .search-card-graphic {
+    display: none; /* Hide rocket on smaller tablet / mobile layouts to prevent overlapping */
+  }
 }
 
 .analyze-form {
