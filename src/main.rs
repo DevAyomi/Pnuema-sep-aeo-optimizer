@@ -964,7 +964,7 @@ pub struct SubscribeRequest {
 }
 
 fn is_valid_email(email: &str) -> bool {
-    if email.len() < 3 || email.len() > 254 {
+    if email.len() < 5 || email.len() > 254 {
         return false;
     }
     let parts: Vec<&str> = email.split('@').collect();
@@ -976,6 +976,18 @@ fn is_valid_email(email: &str) -> bool {
     if username.is_empty() || domain.is_empty() {
         return false;
     }
+    
+    // Reject common disposable/temporary email domains
+    let disposable_domains = [
+        "mailinator.com", "yopmail.com", "tempmail.com", "temp-mail.org", 
+        "10minutemail.com", "guerrillamail.com", "sharklasers.com", 
+        "dispostable.com", "getairmail.com", "maildrop.cc", "tempmailaddress.com"
+    ];
+    let lower_domain = domain.to_lowercase();
+    if disposable_domains.contains(&lower_domain.as_str()) {
+        return false;
+    }
+
     if !domain.contains('.') {
         return false;
     }
@@ -983,6 +995,16 @@ fn is_valid_email(email: &str) -> bool {
     if domain_parts.iter().any(|part| part.is_empty()) {
         return false;
     }
+    
+    // Verify TLD is at least 2 characters and only alphabetic (e.g. .com, .org, .uk)
+    if let Some(tld) = domain_parts.last() {
+        if tld.len() < 2 || !tld.chars().all(|c| c.is_alphabetic()) {
+            return false;
+        }
+    } else {
+        return false;
+    }
+
     true
 }
 

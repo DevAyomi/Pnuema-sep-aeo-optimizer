@@ -120,6 +120,27 @@ document.addEventListener('DOMContentLoaded', () => {
         e.preventDefault();
         const email = subscriberEmailInput.value.trim();
         if (email) {
+            // Strict email format check
+            const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            if (!emailRegex.test(email)) {
+                subscribeError.textContent = 'Please enter a valid email address (e.g. name@example.com).';
+                subscribeError.classList.remove('hidden');
+                return;
+            }
+
+            // Block common disposable email domains
+            const disposableDomains = [
+                'mailinator.com', 'yopmail.com', 'tempmail.com', 'temp-mail.org', 
+                '10minutemail.com', 'guerrillamail.com', 'sharklasers.com', 
+                'dispostable.com', 'getairmail.com', 'maildrop.cc', 'tempmailaddress.com'
+            ];
+            const domain = email.split('@')[1]?.toLowerCase();
+            if (disposableDomains.includes(domain)) {
+                subscribeError.textContent = 'Temporary or disposable email addresses are not allowed.';
+                subscribeError.classList.remove('hidden');
+                return;
+            }
+
             const submitBtn = subscribeForm.querySelector('button[type="submit"]');
             const originalText = submitBtn.textContent;
             submitBtn.disabled = true;
