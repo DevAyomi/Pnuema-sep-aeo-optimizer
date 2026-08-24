@@ -1,0 +1,9 @@
+{
+  "version": 2,
+  "rewrites": [
+    {
+      "source": "/api/:path*",
+      "destination": "https://<YOUR_RAILWAY_APP_URL>/api/:path*"
+    }
+  ]
+}
