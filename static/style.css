@@ -336,6 +336,14 @@ html:not([data-theme]) .sun-icon { display: block; }
 
 .analyze-form {
   width: 100%;
+  position: relative;
+  z-index: 5;
+}
+
+@media (min-width: 993px) {
+  .analyze-form {
+    max-width: calc(100% - 200px); /* Leave room for the rocket illustration on the right */
+  }
 }
 
 .form-row {
